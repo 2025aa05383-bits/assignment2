@@ -16,7 +16,7 @@ models = {name: joblib.load(path) for name, path in model_paths.items()}
 
 st.title('Machine Learning Classification Demo')
 
-# Dataset upload
+# Dataset upload .
 uploaded_file = st.file_uploader('Upload Test CSV (must include "income" column for true labels)', type='csv')
 
 if uploaded_file is not None:
