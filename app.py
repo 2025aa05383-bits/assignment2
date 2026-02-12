@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import joblib
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, recall_score, f1_score, matthews_corrcoef, confusion_matrix, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load models
 model_paths = {
@@ -50,9 +52,19 @@ if uploaded_file is not None:
         })
         st.table(metrics_df)
         
+        #Confusion Matrix as Heatmap
         st.subheader('Confusion Matrix')
         cm = confusion_matrix(y_true, y_pred)
-        st.write(cm)
+        fig, ax = plt.subplots(figsize=(6, 4))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', ax=ax,
+                    xticklabels=['<=50K', '>50K'], yticklabels=['<=50K', '>50K'])
+        ax.set_xlabel('Predicted')
+        ax.set_ylabel('True')
+        ax.set_title('Confusion Matrix Heatmap')
+        st.pyplot(fig)
         
+        #Classification Report as DataFrame Table
         st.subheader('Classification Report')
-        st.text(classification_report(y_true, y_pred))
+        report_dict = classification_report(y_true, y_pred, output_dict=True, target_names=['<=50K', '>50K'])
+        report_df = pd.DataFrame(report_dict).transpose().round(2)
+        st.dataframe(report_df.style.background_gradient(cmap='viridis'))
