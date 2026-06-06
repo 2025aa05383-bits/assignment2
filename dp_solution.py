@@ -566,13 +566,13 @@ def visualise_policy(V: dict, policy: dict,
 visualise_policy(V_star, pi_star,
                  battery=MAX_BATTERY,
                  mask=0,
-                 save_path="/home/claude/dp_policy.png")
+                 save_path="dp_policy.png")
 
 # Also visualise after 1 rescue completed (mask=01 in binary)
 visualise_policy(V_star, pi_star,
                  battery=MAX_BATTERY,
                  mask=1,
-                 save_path="/home/claude/dp_policy_after_rescue1.png")
+                 save_path="dp_policy_after_rescue1.png")
 
 
 # ===========================================================================
@@ -634,7 +634,7 @@ def plot_value_heatmap_over_battery(V: dict,
 
 
 plot_value_heatmap_over_battery(V_star, mask=0,
-                                save_path="/home/claude/dp_value_analysis.png")
+                                save_path="dp_value_analysis.png")
 
 
 # ===========================================================================
@@ -670,7 +670,7 @@ def plot_convergence(delta_history: list, save_path: str = "dp_convergence.png")
     print(f"\n[Plot saved] → {save_path}")
 
 
-plot_convergence(delta_hist, save_path="/home/claude/dp_convergence.png")
+plot_convergence(delta_hist, save_path="dp_convergence.png")
 
 
 # ===========================================================================

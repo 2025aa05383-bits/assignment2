@@ -406,7 +406,7 @@ all_results = {
     "UCB1 (confidence-based)" : ucb1_result["cumulative_rewards"],
 }
 
-plot_cumulative_rewards(all_results, "/home/claude/mab_comparison.png")
+plot_cumulative_rewards(all_results, "mab_comparison.png")
 
 # ---------------------------------------------------------------------------
 # Print first 10 rows of dataset for each strategy
